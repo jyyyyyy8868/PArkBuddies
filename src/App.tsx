@@ -19,7 +19,7 @@ export default function App() {
   }, [initStore]);
 
   return (
-    <Router>
+    <Router basename={import.meta.env.PROD ? "/PArkBuddies" : "/"}>
       <div className="app-container pb-20">
         <Routes>
           <Route path="/" element={<Navigate to="/explore" replace />} />
