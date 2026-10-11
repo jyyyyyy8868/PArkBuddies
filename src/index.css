@@ -1,0 +1,127 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&family=ZCOOL+XiaoWei&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --sage-400: #7C9885;
+  --sage-700: #445548;
+  --cream-100: #FAF7F0;
+  --earth-200: #D4C5A9;
+  --honey-400: #F0D77B;
+  --text-dark: #333d36;
+
+  font-family: "Noto Sans SC", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  line-height: 1.6;
+  font-weight: 400;
+  color: var(--text-dark);
+  background-color: var(--cream-100);
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-tap-highlight-color: transparent;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background-color: var(--cream-100);
+  overscroll-behavior-y: none;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(124, 152, 133, 0.3);
+  border-radius: 4px;
+}
+
+/* Utility classes */
+@layer components {
+  .app-container {
+    @apply mx-auto w-full max-w-[440px] min-h-screen bg-cream-100 relative overflow-x-hidden;
+  }
+
+  .card {
+    @apply bg-white rounded-card shadow-card p-4;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full
+           bg-sage-400 text-white font-medium shadow-soft
+           transition-all duration-200 active:scale-95
+           hover:bg-sage-500 disabled:opacity-50 disabled:active:scale-100;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full
+           bg-cream-200 text-sage-700 font-medium shadow-card
+           transition-all duration-200 active:scale-95
+           hover:bg-cream-300 disabled:opacity-50;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 px-4 py-2 rounded-full
+           text-sage-600 font-medium transition-all duration-200
+           hover:bg-sage-50 active:scale-95;
+  }
+
+  .chip {
+    @apply inline-flex items-center gap-1 px-3 py-1.5 rounded-full text-sm
+           transition-all duration-200 cursor-pointer select-none;
+  }
+
+  .chip-active {
+    @apply bg-sage-400 text-white shadow-card;
+  }
+
+  .chip-default {
+    @apply bg-cream-200 text-sage-600 hover:bg-cream-300;
+  }
+
+  .demo-badge {
+    @apply inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-medium
+           bg-honey-200 text-honey-500 border border-honey-300;
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Hide scrollbar but keep scrollable */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
